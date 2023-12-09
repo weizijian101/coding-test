@@ -367,6 +367,16 @@ export default {
   grid-template-rows: 1fr 1fr;
   grid-gap: 20px;
 
+  .operations {
+    .left {
+      top: 20px;
+    }
+
+    .right {
+      top: 20px;
+    }
+  }
+
   .info-section {
     margin: 0 !important;
     border-radius: 10px !important;
