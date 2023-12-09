@@ -15,6 +15,10 @@
     "bump-version": "zx --quiet scripts/bump-version.mjs"
   },
   "dependencies": {
+    "@vant/touch-emulator": "^1.4.0",
+    "classnames": "^2.3.2",
+    "postcss-px-to-viewport": "^1.1.1",
+    "vant": "^4.8.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
@@ -25,12 +29,15 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.15.1",
     "husky": "^8.0.3",
+    "less": "^4.2.0",
     "lint-staged": "^12.5.0",
+    "postcss-px-to-viewport-8-plugin": "^1.2.3",
     "prettier": "^2.8.8",
     "rimraf": "^3.0.2",
     "vite": "^4.4.7",
     "vite-plugin-blocklet": "^0.6.16",
     "vite-plugin-node-polyfills": "^0.7.0",
+    "vite-plugin-style-vw-loader": "^1.0.7",
     "zx": "^7.2.3"
   },
   "lint-staged": {

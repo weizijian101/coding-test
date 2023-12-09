@@ -1,12 +1,11 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue';
+import '@vant/touch-emulator';
+
+import UserProfile from './components/UserProfile/index.vue';
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <UserProfile />
 </template>
 
 <style>
@@ -15,7 +14,21 @@ import HelloWorld from './components/HelloWorld.vue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: var(--font-color);
+  background-color: #0c1f2c;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  --bg-color: #0c1f2c;
+  --bg-color2: #1d2e3c;
+  --main-color: #0d6e6e;
+  --main-color2: #4a9d9c;
+  --font-color1: #ffe0c8;
+  --font-color2: #e0e0e0;
+}
+
+body {
+  margin: 0;
 }
 </style>
