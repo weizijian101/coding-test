@@ -152,7 +152,6 @@ export default {
     position: relative;
     overflow: hidden;
     color: var(--font-color2);
-    min-height: 20px;
 
     .field-item-uploader {
       position: absolute;
@@ -176,7 +175,6 @@ export default {
         justify-content: center;
 
         .tip {
-          font-size: 14px;
           background-color: var(--main-color2);
           opacity: 0.7;
           height: 50%;

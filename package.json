@@ -31,6 +31,7 @@
     "husky": "^8.0.3",
     "less": "^4.2.0",
     "lint-staged": "^12.5.0",
+    "postcss-plugin-pxtoem": "^1.0.0",
     "postcss-px-to-viewport-8-plugin": "^1.2.3",
     "prettier": "^2.8.8",
     "rimraf": "^3.0.2",

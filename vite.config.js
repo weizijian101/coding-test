@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue';
 import { createBlockletPlugin } from 'vite-plugin-blocklet';
 import { join } from 'path';
 import postcsspxtoviewport from 'postcss-px-to-viewport-8-plugin';
+import postcsspxtoem from 'postcss-plugin-pxtoem';
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
@@ -16,6 +17,16 @@ export default defineConfig(() => {
     css: {
       postcss: {
         plugins: [
+          postcsspxtoem({
+            rootValue: 16,
+            unitPrecision: 5,
+            propList: ['*'],
+            selectorBlackList: ['font-size-tag'],
+            replace: true,
+            mediaQuery: false,
+            minPixelValue: 0,
+            exclude: /node_modules/i,
+          }),
           postcsspxtoviewport({
             unitToConvert: 'px', // 要转化的单位
             viewportWidth: 375, // UI设计稿的宽度

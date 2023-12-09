@@ -1,8 +1,7 @@
 <template>
-  <!-- 包含用户头像，昵称，邮箱，手机号，地址，生日，余额的用户卡片，用于展示用户信息。根据屏幕大小，显示不同的布局。 -->
   <div
     :class="
-      cx('user-profile', {
+      cx('user-profile font-size-tag', {
         'small-screen': isSmallScreen,
         'large-screen': !isSmallScreen,
         'edit-mode': editMode,
@@ -49,7 +48,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import cx from 'classnames';
 
 import useScreenSize from '@/hooks/useScreenSize.js';
@@ -99,10 +98,6 @@ const saveEdit = () => {
 const handleFieldChange = (fieldName, value) => {
   userInfo.value[fieldName] = value;
 };
-
-onMounted(() => {
-  console.log('mounted!', isSmallScreen.value, userInfo.value);
-});
 </script>
 
 <script>
@@ -113,6 +108,7 @@ export default {
 
 <style lang="less" scoped>
 .user-profile {
+  font-size: 10px;
   * {
     transition: all 0.5s ease-in-out;
   }
@@ -193,9 +189,9 @@ export default {
       margin: 0 0 10px;
       font-size: 24px;
       text-align: left;
-      padding-bottom: 10px;
-      height: 45px;
-      line-height: 45px;
+      padding-bottom: 5px;
+      height: 30px;
+      line-height: 30px;
       overflow: hidden;
 
       &.hide-enter-active,
@@ -206,9 +202,9 @@ export default {
       &.hide-leave-from,
       &.hide-enter-to {
         opacity: 1;
-        height: 45px;
+        height: 30px;
         margin: 0 0 10px;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
       }
 
       &.hide-enter-from,
@@ -276,12 +272,13 @@ export default {
       ::v-deep {
         .nickname {
           .info-value {
-            font-size: 32px;
             font-weight: 700;
             color: var(--font-color1);
             letter-spacing: 2px;
             overflow: visible;
             margin: 0;
+            height: 20px;
+
             * {
               transition: all 0.5s ease-in-out;
             }
@@ -289,7 +286,7 @@ export default {
               width: fit-content;
               position: absolute;
               left: 50%;
-              transform: translateX(-50%);
+              transform: translateX(-50%) scale(2);
             }
           }
 
@@ -299,7 +296,7 @@ export default {
                 width: fit-content;
                 position: absolute;
                 left: 0;
-                transform: translateX(0);
+                transform: translateX(0) scale(1);
               }
             }
           }
@@ -335,7 +332,7 @@ export default {
           .info-value {
             margin-bottom: 0;
             margin-top: 0;
-            font-size: inherit;
+            font-size: 16px;
           }
         }
         .info-label {
@@ -347,6 +344,90 @@ export default {
 
   &.large-screen {
     display: grid;
+  }
+}
+
+// 标记给postcss转换单位插件使用
+.font-size-tag {
+  font-size: 16px;
+}
+
+.font-size-tag.large-screen {
+  font-size: 6px;
+}
+
+.large-screen {
+  display: grid;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 20px;
+
+  .info-section {
+    margin: 0 !important;
+    border-radius: 10px !important;
+    position: relative;
+    overflow: scroll;
+
+    &.main-info {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 3;
+
+      &:before {
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding-bottom: 100%;
+        box-sizing: content-box;
+        height: 0;
+      }
+
+      .avatar {
+        width: 60%;
+        padding-bottom: 60%;
+        border-radius: 50%;
+        height: 0;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, calc(15px + 20%));
+        margin: 0;
+        position: absolute;
+      }
+      ::v-deep {
+        .nickname {
+          .info-value {
+            transition: all 0.5s ease-in-out;
+            margin-top: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  &.edit-mode {
+    .info-section {
+      border-radius: 10px !important;
+      padding: 40px 20px 14px;
+
+      &.main-info {
+        ::v-deep {
+          .nickname {
+            .info-value {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
   }
 }
 </style>
